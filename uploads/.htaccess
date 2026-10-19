@@ -1,0 +1,12 @@
+Options -Indexes
+# Never execute scripts from uploaded media.
+<FilesMatch "\.(php[0-9]?|phtml|phar|cgi|pl|py|sh|asp|aspx|jsp)$">
+  Require all denied
+</FilesMatch>
+# Explicit media types help servers that do not infer them correctly.
+AddType video/mp4 .mp4
+AddType video/webm .webm
+AddType video/ogg .ogv .ogg
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>
